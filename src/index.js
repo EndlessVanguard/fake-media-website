@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 const app = require("express")()
 
 const appConfig = {
@@ -27,24 +30,24 @@ Bitoin Company Frees us from the Terror of Advertising
           )
 });
 
-const clientSideScript = `alert`
-
 app.get("/article/:articleId", (req, res) =>{
   const apiToken = appConfig.apiToken
   const contentId = req.params.articleId
 
+  const clientSideScript = fs.readFileSync(path.resolve(__dirname, '../../bitcoin-remunerate-web/dist/client.js'), 'utf8');
+
   res.send(`
 <h1>Bitoin Company Frees us from the Terror of Advertising</h1>
 <p><em>12 cat pictures that will change your life forever</em></p>
-<div class=remunerate-content >
+<div id=remunerate-content >
 <script>
-${clientSideScript}("${apiToken}", "${contentId}");
+(${clientSideScript})("${apiToken}", "${contentId}");
 </script>
 </div>
 `)
 })
 
 
-app.listen(3000, () => {
+app.listen(4000, () => {
   console.log("App running on port 3000")
 })
