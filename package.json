@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devserver": "nodemon ./src/index.js"
+    "devserver": "standard && nodemon ./src/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +12,7 @@
     "express": "^4.13.4"
   },
   "devDependencies": {
-    "nodemon": "^1.9.0"
+    "nodemon": "^1.9.0",
+    "standard": "^6.0.7"
   }
 }
